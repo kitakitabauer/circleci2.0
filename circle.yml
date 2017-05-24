@@ -25,12 +25,11 @@ jobs:
           command: |
             which make
             go version
-#      - run:
-#          name: Run Tests
-#          command: |
-#            echo "Run Tests" |
-#            make cover
-#            bash <(curl -s https://codecov.io/bash) -t ed2dbec1-d62d-4a21-9ce7-5faf137350ac
+            make setup
+      - run:
+          name: Run Tests
+          command: |
+            make cover
 
       # This should go into custom primary image, here's only for the sake of explanation
 #      - run:
