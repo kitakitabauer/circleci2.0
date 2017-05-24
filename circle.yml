@@ -81,7 +81,6 @@ jobs:
 
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "ますたー!!!!!!"
-              echo "これだけでいける"
             elif [[ "${CIRCLE_BRANCH}" =~ release-v.* ]]; then
               echo "productionやねん"
             elif [[ "${CIRCLE_BRANCH}" =~ v.* ]]; then
