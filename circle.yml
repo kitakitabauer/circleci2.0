@@ -37,19 +37,19 @@ jobs:
 
             if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
               curl --user ${CIRCLE_API_TOKEN}: \
-                --data build_parameters[CIRCLE_JOB]=deployment \
+                --data build_parameters[CIRCLE_JOB]=deploy \
                 --data revision=$CIRCLE_SHA1 \
                 https://circleci.com/api/v1.1/project/github/kitakitabauer/circleci2.0/tree/master \
                 >> /dev/null
             fi
 
-  deployment:
+  deploy:
     docker:
       - image: circleci/golang:1.8.2
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: /go/src/github.com/kitakitabauer/circleci2.0/deployment
+    working_directory: /go/src/github.com/kitakitabauer/circleci2.0/deploy
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
