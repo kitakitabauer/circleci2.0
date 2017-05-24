@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Setup For Test
           command: |
-            go get github.com/mattn/goveralls |
+            go version |
             pwd |
             ls
 #      - run:
