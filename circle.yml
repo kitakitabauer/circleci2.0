@@ -7,10 +7,12 @@ jobs:
       #- image: mongo:3.0
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+
     working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-      GOROOT: /usr/local/go
+
     steps:
       - checkout
 
@@ -20,7 +22,6 @@ jobs:
           name: Setup For Test
           command: |
             go version
-            cd ${working_directory}
             make setup
 
 #      - run:
