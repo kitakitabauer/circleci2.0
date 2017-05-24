@@ -7,34 +7,27 @@ jobs:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
       - image: redis:alpine
       - image: mongo:3.0
-
     working_directory: /go/src/github.com/kitakitabauer/circleci2.0
-
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
       AWS_DEFAULT_REGION: ap-northeast-1
       REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
-
     steps:
       - checkout
-
       - run:
           name: Setup For Test
           command: |
             go version
             make setup
-
       - run:
           name: Run Tests
           command: |
             make cover
-
       - deploy:
           name: Deploy Request
           command: |
             echo ${CIRCLE_BRANCH}
             echo ${CIRCLE_TAG}
-
             if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
               curl --user ${CIRCLE_API_TOKEN}: \
                 --data build_parameters[CIRCLE_JOB]=deploy \
@@ -42,7 +35,6 @@ jobs:
                 https://circleci.com/api/v1.1/project/github/kitakitabauer/circleci2.0/tree/master \
                 >> /dev/null
             fi
-
   deploy:
     docker:
       - image: circleci/golang:1.8.2
