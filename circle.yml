@@ -8,7 +8,7 @@ jobs:
       - image: redis:alpine
       - image: mongo:3.0
 
-    working_directory: /go/src/github.com/kitakitabauer/circleci2.0
+    working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
@@ -32,11 +32,6 @@ jobs:
       - deploy:
           name: Deploy Request
           command: |
-            echo $CIRCLE_BRANCH
-            echo $CIRCLE_TAG
-            echo $CIRCLE_API_TOKEN
-            echo $CIRCLE_SHA1
-
             if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
               curl --user ${CIRCLE_API_TOKEN}: \
                 --data build_parameters[CIRCLE_JOB]=deploy \
@@ -47,11 +42,11 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/golang:1.8.2
+      - image: 17.05.0-ce-git
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: /go/src/github.com/kitakitabauer/circleci2.0/deploy
+    working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/deploy
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
