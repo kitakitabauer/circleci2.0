@@ -32,11 +32,17 @@ jobs:
       - deploy:
           name: Deploy Request
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               curl --user ${CIRCLE_API_TOKEN}: \
                 --data build_parameters[CIRCLE_JOB]=deploy \
                 --data revision=${CIRCLE_SHA1} \
                 https://circleci.com/api/v1.1/project/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/tree/master \
+                >> /dev/null
+            elif  [[ "${CIRCLE_TAG}" =~ v.* ]]; then
+              curl --user ${CIRCLE_API_TOKEN}: \
+                --data build_parameters[CIRCLE_JOB]=deploy \
+                --data revision=${CIRCLE_SHA1} \
+                https://circleci.com/api/v1.1/project/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/tree/${CIRCLE_TAG} \
                 >> /dev/null
             fi
 
