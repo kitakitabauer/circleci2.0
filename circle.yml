@@ -34,8 +34,10 @@ jobs:
           command: |
             echo ${CIRCLE_BRANCH}
             echo ${CIRCLE_TAG}
+            echo ${CIRCLE_API_TOKEN}
+            echo ${CIRCLE_SHA1}
 
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
               curl --user ${CIRCLE_API_TOKEN}: \
                 --data build_parameters[CIRCLE_JOB]=deploy \
                 --data revision=$CIRCLE_SHA1 \
