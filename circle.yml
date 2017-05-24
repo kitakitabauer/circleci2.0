@@ -3,15 +3,17 @@ jobs:
   build:
     docker:
       - image: circleci/golang:1.8.2
-      - image: redis:alpine
-      - image: mongo:3.0
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+      - image: redis:alpine
+      - image: mongo:3.0
 
     working_directory: /go/src/github.com/kitakitabauer/circleci2.0
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+      AWS_DEFAULT_REGION: ap-northeast-1
+      REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
 
     steps:
       - checkout
@@ -27,7 +29,8 @@ jobs:
           command: |
             make cover
 
-      #- setup_remote_docker
+      #- setup_remote_docker:
+      #    reusable: true
 
       - deploy:
           command: |
