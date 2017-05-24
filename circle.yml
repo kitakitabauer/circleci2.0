@@ -42,7 +42,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/python
+      - image: circleci/python:3.6.1
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
