@@ -8,7 +8,7 @@ jobs:
       - image: redis:alpine
       - image: mongo:3.0
 
-    working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+    working_directory: /go/src/github.com/kitakitabauer/circleci2.0
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
@@ -42,11 +42,11 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/golang:1.8.2
+      - image: docker:17.05.0-ce-git
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/deploy
+    working_directory: /go/src/github.com/kitakitabauer/circleci2.0/deploy
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
