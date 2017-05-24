@@ -18,6 +18,8 @@ jobs:
 #          command:
 #            echo "Create Working Dir"
 
+      - setup_remote_docker
+
       - run:
           name: Setup For Test
           command: |
@@ -30,8 +32,6 @@ jobs:
 #            echo "Run Tests" |
 #            make cover
 #            bash <(curl -s https://codecov.io/bash) -t ed2dbec1-d62d-4a21-9ce7-5faf137350ac
-
-      # - setup_remote_docker
 
       # This should go into custom primary image, here's only for the sake of explanation
 #      - run:
