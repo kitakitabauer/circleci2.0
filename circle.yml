@@ -49,7 +49,7 @@ jobs:
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: /github.com/kitakitabauer/circleci2.0
+    working_directory: /github.com/kitakitabauer/circleci2.0/deployment
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
