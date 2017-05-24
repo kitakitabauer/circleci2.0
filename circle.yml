@@ -19,10 +19,8 @@ jobs:
       - run:
           name: Setup For Test
           command: |
-            which make
             go version
-            cd /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
-            cat Makefile
+            cd ${working_directory}
             make setup
 
 #      - run:
