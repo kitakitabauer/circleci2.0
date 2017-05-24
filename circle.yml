@@ -39,6 +39,7 @@ jobs:
             echo ${CIRCLE_TAG}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker -v
+              apt-get install awscli
               eval $(aws ecr get-login --region ap-northeast-1)
               echo "ますたー!!!!!!"
               echo "これだけでいける"
