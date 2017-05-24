@@ -32,13 +32,13 @@ jobs:
       - deploy:
           name: Deploy Request
           command: |
-            echo ${CIRCLE_BRANCH}
-            echo ${CIRCLE_TAG}
-            echo ${CIRCLE_API_TOKEN}
-            echo ${CIRCLE_SHA1}
+            echo $CIRCLE_BRANCH
+            echo $CIRCLE_TAG
+            echo $CIRCLE_API_TOKEN
+            echo $CIRCLE_SHA1
 
             if [ "${CIRCLE_BRANCH}" == "master" ] || [[ "${CIRCLE_TAG}" =~ v.* ]]; then
-              curl --user eb4efcf708215e861f4057e505ce560c7eea993b: \
+              curl --user $CIRCLE_API_TOKEN: \
                 --data build_parameters[CIRCLE_JOB]=deploy \
                 --data revision=$CIRCLE_SHA1 \
                 https://circleci.com/api/v1.1/project/github/kitakitabauer/circleci2.0/tree/master \
