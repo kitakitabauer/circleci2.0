@@ -23,8 +23,7 @@ jobs:
       - run:
           name: Setup For Test
           command: |
-            pwd |
-            ls
+            which make
 #      - run:
 #          name: Run Tests
 #          command: |
