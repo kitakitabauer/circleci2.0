@@ -8,7 +8,6 @@ jobs:
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-#    working_directory: /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
     working_directory: /go/src/github.com/kitakitabauer/circleci2.0
 
     environment:
@@ -25,10 +24,10 @@ jobs:
             go version
             make setup
 
-#      - run:
-#          name: Run Tests
-#          command: |
-#            make cover
+      - run:
+          name: Run Tests
+          command: |
+            make cover
 
       # This should go into custom primary image, here's only for the sake of explanation
 #      - run:
