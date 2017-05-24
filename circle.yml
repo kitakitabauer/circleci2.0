@@ -42,7 +42,7 @@ jobs:
 
   deploy:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: circleci:amazon-ecs-agent:1.8.1.21-804d528
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
