@@ -21,6 +21,7 @@ jobs:
           command: |
             which make
             go version
+            cd /go/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
             cat Makefile
             make setup
 
