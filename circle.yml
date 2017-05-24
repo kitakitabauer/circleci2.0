@@ -36,6 +36,7 @@ jobs:
             echo ${CIRCLE_TAG}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
                 echo "ますたー!!!!!!"
+                echo "これだけでいけるのでは？"
             fi
 
       # This should go into custom primary image, here's only for the sake of explanation
