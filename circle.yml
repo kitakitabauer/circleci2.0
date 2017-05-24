@@ -23,7 +23,7 @@ jobs:
           command: |
             go get github.com/mattn/goveralls |
             pwd |
-            ls |
+            ls
 #      - run:
 #          name: Run Tests
 #          command: |
