@@ -52,13 +52,12 @@ jobs:
               echo "これだけでいける"
             fi
 
-            if [[ "${CIRCLE_TAG}" =~ v.* ]]; then
+            if [[ "${CIRCLE_TAG}" =~ release-v.* ]]; then
+              echo "productionやねん"
+            elif [[ "${CIRCLE_TAG}" =~ v.* ]]; then
               echo "stagingやねん"
             fi
 
-            if [[ "${CIRCLE_TAG}" =~ release-v.* ]]; then
-              echo "productionやねん"
-            fi
 
 deployment:
   build:
