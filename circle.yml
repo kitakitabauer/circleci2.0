@@ -30,7 +30,7 @@ jobs:
       #- setup_remote_docker
 
       - deploy:
-        command:
+        command: |
           echo "Deploy!!!!!!!"
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
             echo ${CIRCLE_BRANCH}
