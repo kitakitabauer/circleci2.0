@@ -24,6 +24,7 @@ jobs:
           name: Setup For Test
           command: |
             which make
+            go version
 #      - run:
 #          name: Run Tests
 #          command: |
