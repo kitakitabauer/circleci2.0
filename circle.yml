@@ -40,6 +40,7 @@ jobs:
           reusable: true
 
       - deploy:
+          name: Deploy
           command: |
             echo "Deploy!!!!!!!"
             echo ${CIRCLE_BRANCH}
@@ -49,6 +50,14 @@ jobs:
               eval $(aws ecr get-login --no-include-email --region ap-northeast-1)
               echo "ますたー!!!!!!"
               echo "これだけでいける"
+            fi
+
+            if [ "${CIRCLE_TAG}" =~ v.* ]; then
+              echo "stagingやねん"
+            fi
+
+            if [ "${CIRCLE_TAG}" =~ release-v.* ]; then
+              echo "productionやねん"
             fi
 
 deployment:
