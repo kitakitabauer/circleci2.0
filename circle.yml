@@ -30,11 +30,11 @@ jobs:
       #- setup_remote_docker
 
       - deploy:
-        command: |
-          echo "Deploy!!!!!!!"
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            echo ${CIRCLE_BRANCH}
-          fi
+          command: |
+            echo "Deploy!!!!!!!"
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                echo ${CIRCLE_BRANCH}
+            fi
 
       # This should go into custom primary image, here's only for the sake of explanation
 #      - run:
