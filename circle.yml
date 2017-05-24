@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: golang:1.8.2-alpine
+      - image: circleci/golang:1.8
       #- image: redis:alpine
       #- image: mongo:3.0
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-    working_directory: /go/src/github.com/awa/${CIRCLE_PROJECT_REPONAME}
+    working_directory: /go/src/github.com/kitakitabauer/${CIRCLE_PROJECT_REPONAME}
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
       GOROOT: /usr/local/go
