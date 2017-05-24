@@ -32,6 +32,12 @@ jobs:
       #- setup_remote_docker:
       #    reusable: true
 
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache py-pip=9.0.0-r1
+            pip install awscli==1.11.76
+
       - deploy:
           command: |
             echo "Deploy!!!!!!!"
@@ -39,7 +45,6 @@ jobs:
             echo ${CIRCLE_TAG}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker -v
-              apt-get install awscli
               eval $(aws ecr get-login --region ap-northeast-1)
               echo "ますたー!!!!!!"
               echo "これだけでいける"
