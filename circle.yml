@@ -44,51 +44,50 @@ jobs:
             fi
 
   deployment:
-    build:
-      docker:
-        - image: circleci/golang:1.8.2
-          environment:
-            TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+    docker:
+      - image: circleci/golang:1.8.2
+        environment:
+          TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-      working_directory: /.go_workspace/src/github.com/kitakitabauer/circleci2.0
+    working_directory: /.go_workspace/src/github.com/kitakitabauer/circleci2.0
 
-      environment:
-        TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-        AWS_DEFAULT_REGION: ap-northeast-1
-        REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
+    environment:
+      TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+      AWS_DEFAULT_REGION: ap-northeast-1
+      REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
 
-      steps:
-        - checkout
+    steps:
+      - checkout
 
-        - setup_remote_docker:
-            reusable: true
+      - setup_remote_docker:
+          reusable: true
 
-        - run:
-            name: Install dependencies
-            command: |
-              curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-              sudo python get-pip.py
-              sudo pip install awscli
+      - run:
+          name: Install dependencies
+          command: |
+            curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+            sudo python get-pip.py
+            sudo pip install awscli
 
-        - deploy:
-            name: Deploy
-            command: |
-              echo "Deploy!!!!!!!"
-              echo ${CIRCLE_BRANCH}
-              echo ${CIRCLE_TAG}
-              docker -v
-              eval $(aws ecr get-login --no-include-email --region ap-northeast-1)
+      - deploy:
+          name: Deploy
+          command: |
+            echo "Deploy!!!!!!!"
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_TAG}
+            docker -v
+            eval $(aws ecr get-login --no-include-email --region ap-northeast-1)
 
-              if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                echo "ますたー!!!!!!"
-                echo "これだけでいける"
-              fi
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "ますたー!!!!!!"
+              echo "これだけでいける"
+            fi
 
-              if [[ "${CIRCLE_TAG}" =~ release-v.* ]]; then
-                echo "productionやねん"
-              elif [[ "${CIRCLE_TAG}" =~ v.* ]]; then
-                echo "stagingやねん"
-              fi
+            if [[ "${CIRCLE_TAG}" =~ release-v.* ]]; then
+              echo "productionやねん"
+            elif [[ "${CIRCLE_TAG}" =~ v.* ]]; then
+              echo "stagingやねん"
+            fi
 
 deployment_tag_hook:
   fake_deploy_for_cci2:
