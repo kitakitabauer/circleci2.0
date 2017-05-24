@@ -32,8 +32,10 @@ jobs:
       - deploy:
           command: |
             echo "Deploy!!!!!!!"
+            echo ${CIRCLE_BRANCH}
+            echo ${CIRCLE_TAG}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                echo ${CIRCLE_BRANCH}
+                echo "ますたー!!!!!!"
             fi
 
       # This should go into custom primary image, here's only for the sake of explanation
