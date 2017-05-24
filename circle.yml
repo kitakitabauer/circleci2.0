@@ -42,7 +42,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci:amazon-ecs-agent:1.8.1.21-804d528
+      - image: circleci/amazon-ecs-agent:1.8.1.21-804d528
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
@@ -59,12 +59,12 @@ jobs:
       - setup_remote_docker:
           reusable: true
 
-      - run:
-          name: Install dependencies
-          command: |
-            curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-            sudo python get-pip.py
-            sudo pip install awscli
+#      - run:
+#          name: Install dependencies
+#          command: |
+#            curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+#            sudo python get-pip.py
+#            sudo pip install awscli
 
       - deploy:
           name: Deploy
