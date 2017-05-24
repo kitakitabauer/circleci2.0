@@ -8,7 +8,7 @@ jobs:
       - image: redis:alpine
       - image: mongo:3.0
 
-    working_directory: ../.go_workspace/src/github.com/kitakitabauer/circleci2.0
+    working_directory: /github.com/kitakitabauer/circleci2.0
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
@@ -49,7 +49,7 @@ jobs:
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: ../.go_workspace/src/github.com/kitakitabauer/circleci2.0
+    working_directory: /github.com/kitakitabauer/circleci2.0
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
