@@ -29,15 +29,15 @@ jobs:
           command: |
             make cover
 
-      #- setup_remote_docker:
-      #    reusable: true
-
       - run:
           name: Install dependencies
           command: |
             curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
             sudo python get-pip.py
             sudo pip install awscli
+
+      - setup_remote_docker:
+          reusable: true
 
       - deploy:
           command: |
