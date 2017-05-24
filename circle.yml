@@ -62,6 +62,3 @@ jobs:
 deployment:
   build:
     tag: /.*/
-    command: |
-      echo "これでフックされるらしい"
-      echo ${CIRCLE_TAG}
