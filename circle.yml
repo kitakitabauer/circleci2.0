@@ -24,7 +24,6 @@ jobs:
             go get github.com/mattn/goveralls |
             pwd |
             ls |
-            make setup
 #      - run:
 #          name: Run Tests
 #          command: |
