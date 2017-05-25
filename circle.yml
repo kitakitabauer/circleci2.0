@@ -59,10 +59,10 @@ jobs:
       - checkout
 
       - run:
-          command:
+          command: |
             docker container ls -a
 
-      - setup_remote_docker:
+      - setup_remote_docker
 
       - run:
           name: Install dependencies
