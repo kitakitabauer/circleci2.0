@@ -12,8 +12,6 @@ jobs:
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-      AWS_DEFAULT_REGION: ap-northeast-1
-      REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
 
     steps:
       - checkout
@@ -56,14 +54,15 @@ jobs:
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-      AWS_DEFAULT_REGION: ap-northeast-1
-      REGISTRY: 664653893268.dkr.ecr.ap-northeast-1.amazonaws.com
 
     steps:
       - checkout
 
+      - run:
+          command:
+            docker container ls -a
+
       - setup_remote_docker:
-          reusable: true
 
       - run:
           name: Install dependencies
