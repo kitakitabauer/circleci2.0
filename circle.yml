@@ -23,7 +23,7 @@ jobs:
           name: Check Out Repository
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch repository_https_url .
+            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
             git reset --hard $CIRCLE_SHA1 || (echo "The branch was updated after the build was executed. Please rebuild." 1>&2; false)
 
       - run:
@@ -75,7 +75,7 @@ jobs:
           name: Check Out Repository
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch repository_https_url .
+            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
             git reset --hard $CIRCLE_SHA1 || (echo "The branch was updated after the build was executed. Please rebuild." 1>&2; false)
 
       - setup_remote_docker
