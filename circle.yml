@@ -20,7 +20,7 @@ jobs:
             echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
 
       - run:
-          name: Check Out Repository
+          name: Checkout Repository
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
             git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
@@ -72,7 +72,7 @@ jobs:
             echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
 
       - run:
-          name: Check Out Repository
+          name: Checkout Repository
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
             git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
