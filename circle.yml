@@ -50,7 +50,7 @@ jobs:
         environment:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
-    working_directory: /go/src/github.com/kitakitabauer/circleci2.0
+    working_directory: /tmp/github.com/kitakitabauer/circleci2.0
 
     environment:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
