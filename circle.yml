@@ -14,17 +14,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
     steps:
-      - run:
-          name: Authenication Setting for HTTPS Connection to GitHub
-          command: |
-            echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
-
-      - run:
-          name: Checkout Repository
-          command: |
-            repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
-            git reset --hard $CIRCLE_SHA1 || (echo "The branch was updated after the build was executed. Please rebuild." 1>&2; false)
+      - checkout
 
       - run:
           name: Setup For Test
@@ -67,17 +57,7 @@ jobs:
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
     steps:
-      - run:
-          name: Authenication Setting for HTTPS Connection to GitHub
-          command: |
-            echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
-
-      - run:
-          name: Checkout Repository
-          command: |
-            repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
-            git reset --hard $CIRCLE_SHA1 || (echo "The branch was updated after the build was executed. Please rebuild." 1>&2; false)
+      - checkout
 
       - setup_remote_docker
 
