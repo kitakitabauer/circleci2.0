@@ -41,7 +41,7 @@ jobs:
                 --data build_parameters[CIRCLE_JOB]=deploy \
                 --data revision=${CIRCLE_SHA1} \
                 --data tag=${CIRCLE_TAG} \
-                https://circleci.com/api/v1.1/project/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/tag/${CIRCLE_TAG} \
+                https://circleci.com/api/v1.1/project/github/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/tags/${CIRCLE_TAG} \
                 >> /dev/null
             fi
 
